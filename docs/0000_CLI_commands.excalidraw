@@ -14,7 +14,7 @@
       "strokeColor": "#f08c00",
       "backgroundColor": "transparent",
       "fillStyle": "solid",
-      "strokeWidth": 4,
+      "strokeWidth": 2,
       "strokeStyle": "solid",
       "roughness": 0,
       "opacity": 100,
@@ -23,8 +23,8 @@
       "index": "a0",
       "roundness": null,
       "seed": 1287921632,
-      "version": 1653,
-      "versionNonce": 1558069792,
+      "version": 1654,
+      "versionNonce": 689853773,
       "isDeleted": false,
       "boundElements": [
         {
@@ -32,7 +32,7 @@
           "type": "text"
         }
       ],
-      "updated": 1748661761415,
+      "updated": 1748708580366,
       "link": null,
       "locked": false
     },
