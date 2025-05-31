@@ -1,0 +1,44 @@
+# what pipeline are we running
+name: CI pipeline
+
+# On what branches and an on what trigger
+on:
+
+  # Action that triggers pipeline
+  push:
+    # Specific pushed to branches that trigger the pipeline 
+    branches:
+      - main
+      - dev
+  
+  # other action that triggers the CI is when we open a pull request on these branches
+  pull_request:
+    branches:
+      - main
+      - dev
+
+# the list of jobs that we want to run when the triggers happen
+jobs:
+
+  # first is to bundle and build the site
+  build:
+    runs-on: ubuntu-latest # We use the latest ubuntu system
+
+    #  ????
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: action/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+      
+
+          
