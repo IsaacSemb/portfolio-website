@@ -1,0 +1,102 @@
+
+
+html * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+
+}
+
+body {
+  background: #ccc;
+  height: 100vh;
+  border: 5px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* the entire box for the grid animation */
+.box {
+  position: relative;
+  width: 700px;
+  height: 700px;
+  background-color: #1111;
+  border: 5px solid green;
+  padding: 30px;
+}
+
+/* the top layer and bottom layers */
+.grid-bottom-layer,
+.grid-top-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-bottom: 30px;
+  color: white;
+  background-color: #111;
+  width: 100%;
+  height: 300px;
+  font-size: 2rem;
+  border: 10px solid blue;
+  pointer-events: none;
+  cursor: pointer;
+}
+
+
+:root {
+  /* === Grid Lines (subtle overlays) === */
+  --grid-line1: rgba(0, 255, 0, 0.1);       
+  --grid-line2: rgba(255, 0, 150, 0.1);     
+  --grid-line3: rgba(255, 255, 255, 0.1);     
+}
+
+.grid-bottom-layer {
+  
+  background-image:
+    linear-gradient(to right, var(--grid-line1) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line1) 1px, transparent 1px);
+
+  background-size: 30px 30px;
+}
+.grid-top-layer {
+  /* position: absolute; */
+  top: 0;
+  left: 0;
+  
+  background-image:
+    linear-gradient(to right, var(--grid-line2) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line2) 1px, transparent 1px);
+  
+  background-size: 30px 30px;
+}
+
+.grid-top-layer {
+  opacity: 1;
+}
+
+/*
+create a mask on the top layer
+this reveals the hidden layer of grids under
+should ideally be same as top layer grids to make the whole thing unform
+*/
+
+.grid-top-layer {
+  mask-image: radial-gradient(
+    circle 200px at var(--x, 0px) var(--y, 0px),
+    rgba(255, 255, 255, var(--alpha)) 0%,
+    transparent 100%
+  );
+  
+  /* for browser compatibility */
+  /* -webkit-mask-image: EXACTLY THE SAME AS MASK IMAGE PROPERTIES */
+
+  transition: mask-image 100ms linear;
+  
+  /* Use blending to make spotlight affect grid lines */
+  mix-blend-mode: screen;
+  transition: background-image 0.2s ease;
+  
+}
