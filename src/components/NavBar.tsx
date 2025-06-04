@@ -8,7 +8,7 @@ function NavBar() {
             <Link to='/'>Home</Link>
             <Link to='/about'>About</Link>
             <Link to='/contact'>Contact</Link>
-            <Link to='/test-component'>Test</Link>
+            <Link to='/playground'>Test</Link>
         </div>
     
   )
