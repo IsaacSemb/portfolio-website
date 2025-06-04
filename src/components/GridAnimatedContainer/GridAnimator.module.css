@@ -1,0 +1,107 @@
+/* 
+THESE ARE GLOBAL
+
+html * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #ccc;
+  height: 100vh;
+  border: 5px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+:root {
+  --grid-line1: rgba(0, 255, 0, 0.1);       
+  --grid-line2: rgba(255, 0, 150, 0.1);     
+  --grid-line3: rgba(255, 255, 255, 0.1);     
+}
+*/
+
+/* the entire box for the grid animation */
+/* MUST BE INSIDE ANOTHER CONTAINER */
+.box {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+/* the top layer and bottom layers */
+.grid-bottom-layer,
+.grid-top-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-size: 20px 20px;
+}
+
+:root {
+  /* user sees this by default */
+  --tp-bottom: 0;
+
+  /* what user sees on hover */
+  --tp-top: 1;
+}
+
+/* user sees this by default */
+.grid-bottom-layer {
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 255, 0, var(--tp-bottom)) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(0, 255, 0, var(--tp-bottom)) 1px,
+      transparent 1px
+    );
+}
+
+/* what user sees on hover */
+.grid-top-layer {
+  opacity: 1;
+  pointer-events: auto;
+
+  background-image: linear-gradient(
+      to right,
+      rgba(255, 0, 150, var(--tp-top)) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(255, 0, 150, var(--tp-top)) 1px,
+      transparent 1px
+    );
+}
+
+/*
+create a mask on the top layer
+this reveals the hidden layer of grids under
+should ideally be same as top layer grids to make the whole thing unform
+*/
+
+.grid-top-layer {
+  mask-image: radial-gradient(
+    circle 200px at var(--x, 0px) var(--y, 0px),
+    rgba(255, 255, 255, var(--alpha)) 0%,
+    transparent 100%
+  );
+
+  /* for browser compatibility */
+  /* -webkit-mask-image: EXACTLY THE SAME AS MASK IMAGE PROPERTIES */
+  -webkit-mask-image: radial-gradient(
+    circle 200px at var(--x, 0px) var(--y, 0px),
+    rgba(255, 255, 255, var(--alpha)) 0%,
+    transparent 100%
+  );
+
+  transition: mask-image 100ms linear;
+}
