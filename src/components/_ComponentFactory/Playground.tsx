@@ -10,10 +10,11 @@ function Playground() {
       </GridAnimatedContainer> */}
 
       <div className="
-        border-2 
-        border-green-400
+        border-2
+        border-green-400 
+        relative
         h-[500px]
-        w-[500px]
+        w-full
         ">
         <GridAnimatedContainer/>
         hello

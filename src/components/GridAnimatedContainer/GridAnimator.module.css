@@ -26,7 +26,7 @@ body {
 /* the entire box for the grid animation */
 /* MUST BE INSIDE ANOTHER CONTAINER */
 .box {
-  position: relative;
+  position: absolute;
   height: 100%;
   width: 100%;
 }
@@ -40,15 +40,15 @@ body {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  background-size: 20px 20px;
+  background-size: 30px 30px;
 }
 
 :root {
   /* user sees this by default */
-  --tp-bottom: 0;
+  --tp-bottom: 0.03;
 
   /* what user sees on hover */
-  --tp-top: 1;
+  --tp-top: 0.2;
 }
 
 /* user sees this by default */
@@ -90,7 +90,7 @@ should ideally be same as top layer grids to make the whole thing unform
 
 .grid-top-layer {
   mask-image: radial-gradient(
-    circle 200px at var(--x, 0px) var(--y, 0px),
+    circle 150px at var(--x, 0px) var(--y, 0px),
     rgba(255, 255, 255, var(--alpha)) 0%,
     transparent 100%
   );
@@ -98,7 +98,7 @@ should ideally be same as top layer grids to make the whole thing unform
   /* for browser compatibility */
   /* -webkit-mask-image: EXACTLY THE SAME AS MASK IMAGE PROPERTIES */
   -webkit-mask-image: radial-gradient(
-    circle 200px at var(--x, 0px) var(--y, 0px),
+    circle 150px at var(--x, 0px) var(--y, 0px),
     rgba(255, 255, 255, var(--alpha)) 0%,
     transparent 100%
   );
